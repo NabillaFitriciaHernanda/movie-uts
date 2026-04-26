@@ -1,0 +1,16 @@
+name: GitHub Action CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Cek Status
+      run: echo "Action berhasil berjalan lewat Pull Request!"
