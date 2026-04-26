@@ -1,0 +1,23 @@
+name: PHP Linting CI
+
+on:
+  push:
+    branches: [ "main", "refactoring" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Check PHP Syntax Error
+      run: find app/ -name "*.php" -print0 | xargs -0 -n1 php -l
